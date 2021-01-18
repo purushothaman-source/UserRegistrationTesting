@@ -1,9 +1,12 @@
 package com.uccases;
 
+import org.junit.AfterClass;
 import org.junit.Assert;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class UserRegistrationTest {
+
     @Test
     public void WhenProperFirstName_Should_ReturnTrue() {
         UserRegistration userRegistration = new UserRegistration();
@@ -55,13 +58,13 @@ public class UserRegistrationTest {
     @Test
     public void WhenProperPassword_Should_ReturnTrue() {
         UserRegistration userRegistration = new UserRegistration();
-        boolean result = userRegistration.password("abcd1234");
+        boolean result = userRegistration.password("abcD1234");
         Assert.assertTrue(result);
     }
     @Test
     public void WhenNotProperPassword_Should_ReturnFalse() {
         UserRegistration userRegistration = new UserRegistration();
-        boolean result = userRegistration.password("abcd123");
+        boolean result = userRegistration.password("abcd12345");
         Assert.assertFalse(result);
     }
 }
