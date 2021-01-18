@@ -40,4 +40,16 @@ public class UserRegistrationTest {
         boolean result = userRegistration.email("puru99jun.com");
         Assert.assertFalse(result);
     }
+    @Test
+    public void WhenProperMobile_Should_ReturnTrue() {
+        UserRegistration userRegistration = new UserRegistration();
+        boolean result = userRegistration.mobile("91 7708919016");
+        Assert.assertTrue(result);
+    }
+    @Test
+    public void WhenNotProperMobile_Should_ReturnFalse() {
+        UserRegistration userRegistration = new UserRegistration();
+        boolean result = userRegistration.mobile("7708919016");
+        Assert.assertFalse(result);
+    }
 }
