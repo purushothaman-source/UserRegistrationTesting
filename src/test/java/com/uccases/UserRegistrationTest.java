@@ -19,13 +19,25 @@ public class UserRegistrationTest {
     @Test
     public void WhenProperLastName_Should_ReturnTrue() {
         UserRegistration userRegistration = new UserRegistration();
-        boolean result = userRegistration.firstName("Kabaddi");
+        boolean result = userRegistration.lastName("Kabaddi");
         Assert.assertTrue(result);
     }
     @Test
     public void WhenNotProperLastName_Should_ReturnFalse() {
         UserRegistration userRegistration = new UserRegistration();
-        boolean result = userRegistration.firstName("Ka");
+        boolean result = userRegistration.lastName("Ka");
+        Assert.assertFalse(result);
+    }
+    @Test
+    public void WhenProperEmail_Should_ReturnTrue() {
+        UserRegistration userRegistration = new UserRegistration();
+        boolean result = userRegistration.email("purushoth99jun@gamil.com");
+        Assert.assertTrue(result);
+    }
+    @Test
+    public void WhenNotProperEmail_Should_ReturnFalse() {
+        UserRegistration userRegistration = new UserRegistration();
+        boolean result = userRegistration.email("puru99jun.com");
         Assert.assertFalse(result);
     }
 }
