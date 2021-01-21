@@ -3,15 +3,18 @@ package com.uccases;
 import java.util.regex.Pattern;
 
 public class UserRegistration {
+
     static final String NAME_PATTERN = "^[A-Z][a-zA-Z]{2,}$";
-    static  final String EMAIL_PATTERN = "^[0-9a-zA-Z]+([.\\-_+][0-9a-zA-Z]+)*@[a-z0-9A-Z]+.[a-z]{2,4}([.][a-zA-Z]{2,})*$";
+    static final String EMAIL_PATTERN = "^[0-9a-zA-Z]+([.\\-_+][0-9a-zA-Z]+)*@[a-z0-9A-Z]+.[a-z]{2,4}([.][a-zA-Z]{2,})*$";
     static final String MOBILE_PATTERN = "^91[ ][6-9][0-9]{9}$";
-    static  final String PASSWORD = "^(?=.*[A-Z])[a-zA-Z0-9]{8,}$";
+    static final String PASSWORD3 = "^(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]{8,}$";
 
     public static boolean firstName(String fname) {
         Pattern pattern = Pattern.compile(NAME_PATTERN);
         return pattern.matcher(fname).matches();
     }
+
+
     public static boolean lastName(String lname) {
         Pattern pattern = Pattern.compile(NAME_PATTERN);
         return pattern.matcher(lname).matches();
@@ -28,7 +31,7 @@ public class UserRegistration {
     }
 
     public boolean password(String password) {
-        Pattern pattern = Pattern.compile(PASSWORD);
+        Pattern pattern = Pattern.compile(PASSWORD3);
         return pattern.matcher(password).matches();
     }
 }
