@@ -3,117 +3,117 @@ package com.uccases;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class UserRegistrationTest {
+public class UserRegistrationTest extends UserRegistration {
 
     @Test
-    public void WhenProperFirstName_Should_ReturnTrue()  {
-        UserRegistration userRegistration = new UserRegistration();
+    public void WhenProperFirstName_Should_ReturnTrue() {
         boolean result = false;
         try {
-            result = userRegistration.firstName("Purushoth");
+            result = firstName.check("Purushoth");
+            ;
             Assert.assertTrue(result);
         } catch (UserRegistrationException exception) {
             exception.printStackTrace();
             Assert.assertEquals("Please Enter Proper firstName", exception.getMessage());
         }
     }
+
     @Test
     public void WhenNotProperFirstName_Should_ReturnFalse() {
-        UserRegistration userRegistration = new UserRegistration();
         boolean result = false;
         try {
-            result = userRegistration.firstName("Pu");
+            result = firstName.check("Pu");
             Assert.assertTrue(result);
         } catch (UserRegistrationException exception) {
             Assert.assertEquals("Please Enter Proper firstName", exception.getMessage());
         }
     }
+
     @Test
-    public void WhenProperLastName_Should_ReturnTrue()  {
-        UserRegistration userRegistration = new UserRegistration();
+    public void WhenProperLastName_Should_ReturnTrue() {
         boolean result = false;
         try {
-            result = userRegistration.lastName("Kabaddi");
+            result = lastName.check("Kabaddi");
             Assert.assertTrue(result);
         } catch (UserRegistrationException exception) {
             exception.printStackTrace();
             Assert.assertEquals("please Enter Proper lastname", exception.getMessage());
         }
     }
+
     @Test
     public void WhenNotProperLastName_Should_ReturnFalse() {
-        UserRegistration userRegistration = new UserRegistration();
         boolean result = false;
         try {
-            result = userRegistration.lastName("Ka");
+            result = lastName.check("Ka");
             Assert.assertTrue(result);
         } catch (UserRegistrationException exception) {
             Assert.assertEquals("please Enter Proper lastname", exception.getMessage());
         }
     }
+
     @Test
-    public void WhenProperEmail_Should_ReturnTrue()  {
-        UserRegistration userRegistration = new UserRegistration();
+    public void WhenProperEmail_Should_ReturnTrue() {
         boolean result = false;
         try {
-            result = userRegistration.email("purushoth99jun@gamil.com");
+            result = email.check("purushoth99jun@gamil.com");
             Assert.assertTrue(result);
         } catch (UserRegistrationException exception) {
             exception.printStackTrace();
             Assert.assertEquals("please Enter Proper email", exception.getMessage());
         }
     }
+
     @Test
-    public void WhenNotProperEmail_Should_ReturnFalse()  {
-        UserRegistration userRegistration = new UserRegistration();
+    public void WhenNotProperEmail_Should_ReturnFalse() {
         boolean result = false;
         try {
-            result = userRegistration.email("puru99jun.com");
+            result = email.check("puru99jun.com");
             Assert.assertTrue(result);
         } catch (UserRegistrationException exception) {
             Assert.assertEquals("please Enter Proper email", exception.getMessage());
         }
     }
+
     @Test
-    public void WhenProperMobile_Should_ReturnTrue()  {
-        UserRegistration userRegistration = new UserRegistration();
+    public void WhenProperMobile_Should_ReturnTrue() {
         boolean result = false;
         try {
-            result = userRegistration.mobile("91 7708919016");
+            result = mobile.check("91 7708919016");
             Assert.assertTrue(result);
         } catch (UserRegistrationException exception) {
             exception.printStackTrace();
             Assert.assertEquals("please Enter Proper mobile", exception.getMessage());
         }
     }
+
     @Test
-    public void WhenNotProperMobile_Should_ReturnFalse()  {
-        UserRegistration userRegistration = new UserRegistration();
+    public void WhenNotProperMobile_Should_ReturnFalse() {
         boolean result = false;
         try {
-            result = userRegistration.mobile("7708919016");
+            result = mobile.check("7708919016");
             Assert.assertTrue(result);
         } catch (UserRegistrationException exception) {
             Assert.assertEquals("please Enter Proper mobile", exception.getMessage());
         }
     }
+
     @Test
     public void WhenProperPassword_Should_ReturnTrue() {
-        UserRegistration userRegistration = new UserRegistration();
         try {
-            boolean result = userRegistration.password("Purushoth99");
+            boolean result = password.check("Purushoth99");
             Assert.assertTrue(result);
         } catch (UserRegistrationException exception) {
             exception.printStackTrace();
             Assert.assertEquals("please Enter Proper password", exception.getMessage());
         }
     }
+
     @Test
     public void WhenNotProperPassword_Should_ReturnFalse() {
-        UserRegistration userRegistration = new UserRegistration();
         boolean result = false;
         try {
-            result = userRegistration.password("Purushoth");
+            result = password.check("Purushoth");
             Assert.assertTrue(result);
         } catch (UserRegistrationException exception) {
             Assert.assertEquals("please Enter Proper password", exception.getMessage());

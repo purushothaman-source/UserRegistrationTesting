@@ -2,6 +2,10 @@ package com.uccases;
 
 import java.util.regex.Pattern;
 
+interface IUserRegistration {
+    boolean check(String n) throws UserRegistrationException;
+}
+
 public class UserRegistration {
 
     static final String NAME_PATTERN = "^[A-Z][a-zA-Z]{2,}$";
@@ -9,41 +13,64 @@ public class UserRegistration {
     static final String MOBILE_PATTERN = "^91[ ][6-9][0-9]{9}$";
     static final String PASSWORD = "^(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]{8,}$";
 
-    public static boolean firstName(String fname) throws UserRegistrationException {
-
-            Pattern pattern = Pattern.compile(NAME_PATTERN);
-            if(pattern.matcher(fname).matches())return true;
+    IUserRegistration firstName = (n) -> {
+        Pattern pattern = Pattern.compile(NAME_PATTERN);
+        try {
+            if (n.length() == 0)
+                throw new UserRegistrationException("Please Enter Proper firstName");
+            if (pattern.matcher(n).matches()) return true;
             throw new UserRegistrationException("Please Enter Proper firstName");
-    }
+        } catch (NullPointerException exception) {
+            throw new UserRegistrationException("Please Enter Proper firstName");
+        }
+    };
 
-
-    public static boolean lastName(String lname) throws UserRegistrationException {
-
-            Pattern pattern = Pattern.compile(NAME_PATTERN);
-            if(pattern.matcher(lname).matches())return true;
+    IUserRegistration lastName = (n) -> {
+        Pattern pattern = Pattern.compile(NAME_PATTERN);
+        try {
+            if (n.length() == 0)
+                throw new UserRegistrationException("please Enter Proper lastname");
+            if (pattern.matcher(n).matches()) return true;
             throw new UserRegistrationException("please Enter Proper lastname");
+        } catch (NullPointerException exception) {
+            throw new UserRegistrationException("please Enter Proper lastname");
+        }
+    };
 
-    }
-
-    public boolean email(String email) throws UserRegistrationException {
-
-            Pattern pattern = Pattern.compile(EMAIL_PATTERN);
-            if(pattern.matcher(email).matches()) return true;
+    IUserRegistration email = (n) -> {
+        Pattern pattern = Pattern.compile(EMAIL_PATTERN);
+        try {
+            if (n.length() == 0)
+                throw new UserRegistrationException("please Enter Proper email");
+            if (pattern.matcher(n).matches()) return true;
             throw new UserRegistrationException("please Enter Proper email");
+        } catch (NullPointerException exception) {
+            throw new UserRegistrationException("please Enter Proper email");
+        }
+    };
 
-    }
-
-    public boolean mobile(String mobile) throws UserRegistrationException {
-
+    IUserRegistration mobile = (n) -> {
         Pattern pattern = Pattern.compile(MOBILE_PATTERN);
-            if(pattern.matcher(mobile).matches()) return true;
+        try {
+            if (n.length() == 0)
+                throw new UserRegistrationException("please Enter Proper mobile");
+            if (pattern.matcher(n).matches()) return true;
             throw new UserRegistrationException("please Enter Proper mobile");
-    }
+        } catch (NullPointerException exception) {
+            throw new UserRegistrationException("please Enter Proper mobile");
+        }
+    };
 
-    public boolean password(String password) throws UserRegistrationException {
-
-            Pattern pattern = Pattern.compile(PASSWORD);
-            if(pattern.matcher(password).matches())return true;
+    IUserRegistration password = (n) -> {
+        Pattern pattern = Pattern.compile(PASSWORD);
+        try {
+            if (n.length() == 0)
+                throw new UserRegistrationException("please Enter Proper password");
+            if (pattern.matcher(n).matches()) return true;
             throw new UserRegistrationException("please Enter Proper password");
-    }
+        } catch (UserRegistrationException exception) {
+            throw new UserRegistrationException("please Enter Proper password");
+        }
+    };
 }
+

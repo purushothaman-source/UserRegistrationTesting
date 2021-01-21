@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.Collection;
 
 @RunWith(Parameterized.class)
-public class ValidEmailTest {
+public class ValidEmailTest extends UserRegistration {
   private String email2Test;
     private boolean expectedResult;
 
@@ -32,7 +32,7 @@ public class ValidEmailTest {
         UserRegistration userRegistration=new UserRegistration();
         boolean result = false;
         try {
-            result = userRegistration.email(this.email2Test);
+            result = email.check(this.email2Test);
             Assert.assertEquals(this.expectedResult,result);
         } catch (UserRegistrationException exception) {
             exception.printStackTrace();
