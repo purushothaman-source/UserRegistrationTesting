@@ -28,9 +28,15 @@ public class ValidEmailTest {
 
 
     @Test
-    public void givenEmailasVar_shouldReturnAsPerCase() {
+    public void givenEmailasVar_shouldReturnAsPerCase()  {
         UserRegistration userRegistration=new UserRegistration();
-        boolean result = userRegistration.email(this.email2Test);
-        Assert.assertEquals(this.expectedResult,result);
+        boolean result = false;
+        try {
+            result = userRegistration.email(this.email2Test);
+            Assert.assertEquals(this.expectedResult,result);
+        } catch (UserRegistrationException exception) {
+            exception.printStackTrace();
+            Assert.assertEquals("please Enter Proper email",exception.getMessage());
+        }
     }
 }
