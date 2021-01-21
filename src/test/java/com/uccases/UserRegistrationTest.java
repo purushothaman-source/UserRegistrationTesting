@@ -56,7 +56,7 @@ public class UserRegistrationTest {
     @Test
     public void WhenProperPassword_Should_ReturnTrue() {
         UserRegistration userRegistration = new UserRegistration();
-        boolean result = userRegistration.password("Purushoth99");
+        boolean result = userRegistration.password("Purush9@");
         Assert.assertTrue(result);
     }
     @Test
