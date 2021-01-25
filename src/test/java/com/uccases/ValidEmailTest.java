@@ -9,9 +9,11 @@ import java.util.Arrays;
 import java.util.Collection;
 
 @RunWith(Parameterized.class)
-public class ValidEmailTest extends UserRegistration {
+public class ValidEmailTest  {
   private String email2Test;
     private boolean expectedResult;
+    static final String EMAIL_PATTERN = "^[0-9a-zA-Z]+([.\\-_+][0-9a-zA-Z]+)*@[a-z0-9A-Z]+.[a-z]{2,4}([.][a-zA-Z]{2,})*$";
+
 
     public ValidEmailTest(String email2Test, boolean expectedResult) {
         this.email2Test = email2Test;
@@ -32,7 +34,7 @@ public class ValidEmailTest extends UserRegistration {
         UserRegistration userRegistration=new UserRegistration();
         boolean result = false;
         try {
-            result = email.check(this.email2Test);
+            result = userRegistration.validate.check(this.email2Test,EMAIL_PATTERN);
             Assert.assertEquals(this.expectedResult,result);
         } catch (UserRegistrationException exception) {
             exception.printStackTrace();
